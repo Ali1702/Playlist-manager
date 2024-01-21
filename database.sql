@@ -4,7 +4,7 @@ DROP DATABASE IF EXISTS playlists;
 CREATE DATABASE playlists;
 
 USE playlists;
-
+-- todo: remove the user table
 CREATE TABLE Users (
   UserID INT AUTO_INCREMENT PRIMARY KEY,
   Username VARCHAR(100) NOT NULL,
@@ -27,14 +27,13 @@ CREATE TABLE Songs (
   Artist VARCHAR(50) NOT NULL,
   Album VARCHAR(50),
   Length INT,
-  Genre VARCHAR(100),
-  ReleaseDate DATETIME
+  Genre VARCHAR(100)
 );
 
 CREATE TABLE PlaylistSongs (
   PlaylistID INT NOT NULL,
   SongID INT NOT NULL,
-  AddedDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+  Position INT NOT NULL,
   PRIMARY KEY (PlaylistID, SongID),
   FOREIGN KEY (PlaylistID) REFERENCES Playlists(PlaylistID),
   FOREIGN KEY (SongID) REFERENCES Songs(SongID)
