@@ -1,0 +1,35 @@
+Retrieve updated playlist details after removing a song:
+  tags:
+    - Playlists
+  parameters:
+    - name: playlist_id
+      in: path
+      description: Unique ID of the playlist from which the song was removed
+      required: true
+      type: integer
+    - name: song_id
+      in: path
+      description: Unique ID of the song that was removed
+      required: true
+      type: integer
+  responses:
+    200:
+      description: Updated playlist details after the song removal
+      schema:
+        type: object
+        properties:
+          PlaylistID:
+            type: integer
+            description: Unique identifier for the playlist
+          Name:
+            type: string
+            description: Name of the playlist
+          Description:
+            type: string
+            description: Description of the playlist
+          Songs:
+            type: array
+            items:
+              $ref: '#/definitions/Song'
+    404:
+      description: Playlist or song not found

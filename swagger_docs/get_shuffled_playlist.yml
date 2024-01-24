@@ -1,0 +1,16 @@
+Retrieve a shuffled playlist by its ID:
+  tags:
+    - Playlists
+  parameters:
+    - in: path
+      name: playlist_id
+      type: integer
+      required: true
+      description: Unique ID of the playlist
+  responses:
+    200:
+      description: Successfully retrieved the shuffled playlist
+      schema:
+        $ref: '#/definitions/ShuffledPlaylist'
+    404:
+      description: Playlist not found or no songs in the playlist

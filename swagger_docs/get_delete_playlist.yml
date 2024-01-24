@@ -1,0 +1,20 @@
+Get response after deleting a playlist:
+  tags:
+    - Playlists
+  parameters:
+    - name: playlist_id
+      in: path
+      description: Unique ID of the playlist that was deleted
+      required: true
+      type: integer
+  responses:
+    200:
+      description: Confirmation of playlist deletion
+      schema:
+        type: object
+        properties:
+          result:
+            type: string
+            description: Confirmation message
+    404:
+      description: Playlist not found

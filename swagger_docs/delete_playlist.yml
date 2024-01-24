@@ -1,0 +1,20 @@
+Delete a specific playlist:
+  tags:
+    - Playlists
+  parameters:
+    - name: playlist_id
+      in: path
+      description: Unique ID of the playlist to delete
+      required: true
+      type: integer
+  responses:
+    200:
+      description: Playlist successfully deleted
+      schema:
+        type: object
+        properties:
+          result:
+            type: string
+            description: Confirmation of deletion
+    404:
+      description: Playlist not found

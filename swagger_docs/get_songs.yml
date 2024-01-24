@@ -1,0 +1,24 @@
+Get list of songs:
+  tags:
+    - Songs
+  responses:
+    200:
+      description: A list of all songs
+      schema:
+        type: array
+        items:
+          $ref: '#/definitions/Song'
+definitions:
+  Song:
+    type: object
+    properties:
+      SongID:
+        type: integer
+        format: int64
+        description: Unique identifier for the song
+      Title:
+        type: string
+        description: Title of the song
+      Artist:
+        type: string
+        description: Artist of the song
