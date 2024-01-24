@@ -1,0 +1,16 @@
+Shuffle the songs in a specified playlist:
+  tags:
+    - Playlists
+  parameters:
+    - in: path
+      name: playlist_id
+      type: integer
+      required: true
+      description: Unique ID of the playlist to shuffle
+  responses:
+    200:
+      description: The playlist has been successfully shuffled
+      schema:
+        $ref: '#/definitions/ShuffledPlaylist'
+    404:
+      description: Playlist not found or no songs in the playlist

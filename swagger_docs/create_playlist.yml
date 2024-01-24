@@ -1,0 +1,49 @@
+Create a new playlist:
+  tags:
+    - Playlists
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  parameters:
+    - in: body
+      name: body
+      description: Playlist object that needs to be added to the store
+      required: true
+      schema:
+        id: Playlist
+        required:
+          - name
+        properties:
+          name:
+            type: string
+            description: Name of the playlist
+          description:
+            type: string
+            description: Description of the playlist
+  responses:
+    201:
+      description: Playlist successfully created
+      schema:
+        id: PlaylistResponse
+        properties:
+          PlaylistID:
+            type: integer
+            format: int64
+            description: Unique identifier for the playlist
+          Name:
+            type: string
+            description: Name of the playlist
+          Description:
+            type: string
+            description: Description of the playlist
+          CreationDate:
+            type: string
+            format: date-time
+            description: Date and time the playlist was created
+          Songs:
+            type: array
+            items:
+              $ref: '#/definitions/Song'
+    400:
+      description: Invalid input

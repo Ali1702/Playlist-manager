@@ -1,0 +1,35 @@
+Remove a song from a playlist:
+  tags:
+    - Playlists
+  parameters:
+    - name: playlist_id
+      in: path
+      description: Unique ID of the playlist from which the song will be removed
+      required: true
+      type: integer
+    - name: song_id
+      in: path
+      description: Unique ID of the song to remove from the playlist
+      required: true
+      type: integer
+  responses:
+    200:
+      description: Song successfully removed from the playlist, and updated playlist details are returned
+      schema:
+        type: object
+        properties:
+          PlaylistID:
+            type: integer
+            description: Unique identifier for the playlist
+          Name:
+            type: string
+            description: Name of the playlist
+          Description:
+            type: string
+            description: Description of the playlist
+          Songs:
+            type: array
+            items:
+              $ref: '#/definitions/Song'
+    404:
+      description: Playlist or song not found

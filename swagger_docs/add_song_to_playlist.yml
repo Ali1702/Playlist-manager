@@ -1,0 +1,39 @@
+Add a song to a specific playlist:
+  tags:
+    - Playlists
+  parameters:
+    - name: playlist_id
+      in: path
+      description: The ID of the playlist to which the song will be added
+      required: true
+      type: integer
+    - name: song_id
+      in: path
+      description: The ID of the song to add to the playlist
+      required: true
+      type: integer
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  responses:
+    200:
+      description: Song added to the playlist successfully
+      schema:
+        type: object
+        properties:
+          PlaylistID:
+            type: integer
+            description: Unique identifier of the playlist
+          Name:
+            type: string
+            description: Name of the playlist
+          Description:
+            type: string
+            description: Description of the playlist
+          Songs:
+            type: array
+            items:
+              $ref: '#/definitions/Song'
+    404:
+      description: Playlist or song not found

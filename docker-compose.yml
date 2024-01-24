@@ -1,9 +1,12 @@
 version: '3.8'
+
 services:
-  sql_server:
-    image: mcr.microsoft.com/mssql/server:2019-latest
-    environment:
-      SA_PASSWORD: "YourStrong!Passw0rd"
-      ACCEPT_EULA: "Y"
+  db:
+    image: mysql:latest
     ports:
-      - "1433:1433"
+      - 1433:3306
+    volumes:
+      - ./db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: sasa
+      MYSQL_DATABASE: playlists

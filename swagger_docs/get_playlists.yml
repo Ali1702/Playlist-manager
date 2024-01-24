@@ -1,0 +1,10 @@
+Retrieve all playlists:
+  tags:
+    - Playlists
+  responses:
+    200:
+      description: A list of playlists
+      schema:
+        type: array
+        items:
+          $ref: '#/definitions/Playlist'
